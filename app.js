@@ -6,9 +6,22 @@ fetch("https://pomber.github.io/covid19/timeseries.json")
 
 function populateTable(data)
 {
-	 var x = document.createElement("TABLE");
-	 x.setAttribute("id", "myTable");
-	 document.body.appendChild(x);
+	 var tbl = document.createElement("TABLE");
+	 tbl.setAttribute("id", "myTable");
+	 document.body.appendChild(tbl);
+	 
+		var tr = document.createElement("TR");
+		document.getElementById("myTable").appendChild(tr);
+	
+		var th = document.createElement("th");
+		var thCountries = document.createTextNode("Countries");
+		th.appendChild(thCountries);
+		tr.appendChild(th);
+		
+		var th1 = document.createElement("th");
+		var thCounts = document.createTextNode("Counts");
+		th1.appendChild(thCounts);
+			tr.appendChild(th1	);
 		
 	for(country in data)
 	{
