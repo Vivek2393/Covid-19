@@ -8,27 +8,31 @@ function populateTable(data)
 {
 	 var tbl = document.createElement("TABLE");
 	 tbl.setAttribute("id", "myTable");
-	 document.body.appendChild(tbl);
+	 tbl.setAttribute("class","table table-striped");
 	 
-		var tr = document.createElement("TR");
-		document.getElementById("myTable").appendChild(tr);
+	 var tHead = tbl.createTHead();
+	 tHead.setAttribute("id", "tHead");
+	 
+	 var row = tHead.insertRow(0);
+	 var cell =row.insertCell(0);
+	 cell.innerHTML = "<b>Countries</b>"
+	 
+	 var cell1 =row.insertCell(1);
+	 cell1.innerHTML = "<b>Counts</b>"
+	 
+	 xyz.appendChild(tbl);
 	
-		var th = document.createElement("th");
-		var thCountries = document.createTextNode("Countries");
-		th.appendChild(thCountries);
-		tr.appendChild(th);
+	var tbody = document.createElement("TBODY");
+	
+	document.getElementById("myTable").appendChild(tbody)
+	
+	var totalCount =0;
 		
-		var th1 = document.createElement("th");
-		var thCounts = document.createTextNode("Counts");
-		th1.appendChild(thCounts);
-			tr.appendChild(th1	);
-		var totalCount =0;
 	for(country in data)
-	{
-		
+	{		
 		var y = document.createElement("TR");
-		y.setAttribute("id", "myTr");
-		document.getElementById("myTable").appendChild(y);
+	
+		tbody.appendChild(y);
 
 		var z = document.createElement("TD");
 		var t = document.createTextNode(country);
@@ -44,5 +48,5 @@ function populateTable(data)
 		y.appendChild(z1);
 			
 	}
-	xyz.innerText +=totalCount;	
+//	xyz.innerText +=totalCount;	
 }
