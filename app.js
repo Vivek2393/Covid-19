@@ -22,9 +22,10 @@ function populateTable(data)
 		var thCounts = document.createTextNode("Counts");
 		th1.appendChild(thCounts);
 			tr.appendChild(th1	);
-		
+		var totalCount =0;
 	for(country in data)
 	{
+		
 		var y = document.createElement("TR");
 		y.setAttribute("id", "myTr");
 		document.getElementById("myTable").appendChild(y);
@@ -34,12 +35,14 @@ function populateTable(data)
 		z.appendChild(t);
 		
 		var z1 = document.createElement("TD");
-		var t1 = document.createTextNode(data[country][data[country].length-1].confirmed);
+		var casesInCountry = data[country][data[country].length-1].confirmed;
+		totalCount  = totalCount + casesInCountry;
+		var t1 = document.createTextNode(casesInCountry);
 		z1.appendChild(t1);
 		
 		y.appendChild(z);
 		y.appendChild(z1);
 			
 	}
-	xyz.innerText =data['India'][data['India'].length-1].confirmed;
+	xyz.innerText +=totalCount;	
 }
