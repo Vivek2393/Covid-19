@@ -1,39 +1,45 @@
-<!doctype html>
-<!--
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<html lang="en">
+<html ng-app="helloApp">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Template Polymer 3.0 App">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#fff">
-  <link rel="icon" href="manifest/favicon.ico">
-  <link rel="manifest" href="manifest.json">
-  <link rel="canonical" href="https://start-polymer3.firebaseapp.com/" />
-  <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" async></script>
-  <script src="./src/start-polymer3.js" type="module" async></script>
-  <title>Start Polymer 3.0</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+<style>
+.jumbotron {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  margin-bottom: 10px;
+}
+.sortorder:after {
+  content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+}
+.sortorder.reverse:after {
+  content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+}
+</style>
+<script src="./app.js"></script>
 </head>
-<body style="background:burlywood;">
-  <start-polymer3>
-    <!-- 
-      Placeholder Content: This content will be replaced when <start-polymer3>
-      is rendered.
-      
-      Placeholder content improves perceived render time and makes sure
-      users with JavaScript disabled will see something helpful.
-    -->
-
-    
-    
-    
-  </start-polymer3>
+<body ng-controller="CompanyCtrl">
+<div class="container">
+	<div class="jumbotron">
+		<h1>COVID-19</h1>      
+		<p>Most accurate count of COVID-19 cases across the World</p>
+	</div>
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th ng-click="sortBy('0')" class="sortorder" ng-class="{reverse: reverse}"  >Countries</th>
+		<th ng-click="sortBy('1')" class="sortorder" ng-class="{reverse: reverse}" >Total Cases</th>
+	</tr>
+</thead>
+<tbody>
+	<tr ng-repeat="country in countries | orderBy:propertyName:reverse">
+		<td>{{country[0]}}</td>
+		<td>{{country[1]}}</td>
+	</tr>
+</tbody>
+</table>
+</div>
 </body>
 </html>
